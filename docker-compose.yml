@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  kafka:
+    image: poc-kafka-connect
+    build:
+      context: connect
+    ports:
+      - 2181:2181
+      - 3030:3030
+      - 8081-8083:8081-8083
+      - 9092:9092      
+    environment:
+      ADV_HOST: localhost
+      SAMPLEDATA: 0
+      CONNECT_HEAP: 1G
+      RUNTESTS: 0
+      DISABLE_JMX: 1
+      BROWSECONFIGS: 1
+      KAFKA_CREATE_TOPICS: "events_topic:1:1"
+      AWS_ACCESS_KEY_ID: ""
+      AWS_SECRET_ACCESS_KEY: ""
